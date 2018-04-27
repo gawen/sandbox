@@ -6,3 +6,4 @@ The goal is to find vector(s) for every point of the graph which encodes the dis
 
 `nmf.py` is a sandbox Python script which uses [non-negative matrix factorization](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization) to try to solve this problem.
 
+`mds.py` is a tentative to use the [MSD method](http://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS), but not successful yet.
