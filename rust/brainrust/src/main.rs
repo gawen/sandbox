@@ -33,11 +33,11 @@ struct BFVM {
 
 enum StepState {
     Executed,
-    BadInstruction { inst: char },
+    BadInstruction(char),
     Finished,
     StackUnderflow,
     UnclosedLoop,
-    UnprintableCharacter { c: u8 },
+    UnprintableCharacter(u8),
 }
 
 impl BFVM {
@@ -83,7 +83,7 @@ impl BFVM {
                 let v = self.mem.get(self.dp);
                 match char::from_u32(v as u32) {
                     Some(x) => println!("{}", x), // XXX TODO
-                    None => return StepState::UnprintableCharacter { c: v },
+                    None => return StepState::UnprintableCharacter(v),
                 }
             }
 
@@ -122,7 +122,7 @@ impl BFVM {
                 }
             }
 
-            _ => return StepState::BadInstruction { inst: c },
+            _ => return StepState::BadInstruction(c),
         }
 
         return StepState::Executed;
